@@ -1,0 +1,39 @@
+name: Reusable Automatic Release
+
+on:
+  workflow_call:
+    secrets:
+      TOKEN:
+        required: false
+
+jobs:
+  release:
+    name: Generate tag and version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Configure Semantic Release (Disable NPM)
+        run: |
+          cat <<EOF > .releaserc.json
+          {
+            "branches": ["main"],
+            "plugins": [
+              "@semantic-release/commit-analyzer",
+              "@semantic-release/release-notes-generator",
+              "@semantic-release/github"
+            ]
+          }
+          EOF
+
+      - name: Run Semantic Release
+        uses: cycjimmy/semantic-release-action@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
