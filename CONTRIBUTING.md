@@ -22,6 +22,8 @@ All new branches must be created from `develop` (except for hotfixes). To mainta
 * **`bugfix/...`**: For fixing bugs found during development. (e.g., `bugfix/45-broken-login-button`)
 * **`hotfix/...`**: **Exception:** Created directly from `main` to fix a critical error currently live in production. (e.g., `hotfix/99-server-crash`)
 
+![](https://media2.dev.to/dynamic/image/width=800,height=450,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fsqxc7kepfadqqkg6sgdn.png)
+
 ## 3. Issue Management
 
 Before writing code, make sure an Issue exists. We classify them as follows:
